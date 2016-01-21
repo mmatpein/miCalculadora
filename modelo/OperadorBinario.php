@@ -16,6 +16,18 @@ namespace miCalc\modelo;
 class OperadorBinario {
     //put your code here
     public function suma($operando1, $operando2){
-        return 0;
+        return $operando1 + $operando2;
+    }
+    
+    public function resta($operando1, $operando2){
+        return $operando1 - $operando2;
+    }
+    
+    public function multiplicacion($operando1, $operando2){
+        return $operando1 * $operando2;
+    }
+    
+    public function division($operando1, $operando2){
+        return $operando1 / $operando2;
     }
 }
