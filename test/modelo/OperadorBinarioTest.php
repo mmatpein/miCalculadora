@@ -15,6 +15,7 @@ namespace miCalc\test\modelo;
  */
 require 'vendor/autoload.php';
 use miCalc\modelo\OperadorBinario;
+use miCalc\modelo\DatosOperacion;
 class OperadorBinarioTest extends \PHPUnit_Framework_TestCase{
     
     protected $operadorBinario;
@@ -22,6 +23,20 @@ class OperadorBinarioTest extends \PHPUnit_Framework_TestCase{
     protected function setUp(){
         $this->operadorBinario = new OperadorBinario();
     }
+    
+    /**
+     * @dataProvider providerOperacion
+     */
+    public function testOperadorBinarioOperacion($operando1, $operando2, $operacion, $resultadoEsperado){
+        $datosOperacion = new DatosOperacion();
+        $datosOperacion->operacion = $operacion;
+        $datosOperacion->operando1 = $operando1;
+        $datosOperacion->operando2 = $operando2;
+        
+        $resultado = $this->operadorBinario->operacion($datosOperacion);
+        $this->assertEquals($resultado,$resultadoEsperado,"La operación no es correcta");
+    }
+
     
     /**
      * @dataProvider providerSuma
@@ -85,6 +100,23 @@ class OperadorBinarioTest extends \PHPUnit_Framework_TestCase{
             '6 / 3 = 2' => array(6,3,2),
             '10 / 2 = 5' => array(10,2,5),
             '10 / (-2) = -5' => array(10,-2,-5)
+        );
+    }
+    
+    public function providerOperacion(){
+        return array(
+            '3 + 2 = 5' => array(3,2,DatosOperacion::SUMA,5),
+            '-3 + 7 = 4' => array(-3,7,DatosOperacion::SUMA,4),
+            '-6 + -7 = -13' => array(-6,-7,DatosOperacion::SUMA,-13),
+            '3 - 7 = -4' => array(3,7,DatosOperacion::RESTA,-4),
+            '3 - (-7) = 10' => array(3,-7,DatosOperacion::RESTA,10),
+            '-3 - 7 = -10' => array(-3,7,DatosOperacion::RESTA,-10),
+            '3 * 2 = 6' => array(3,2,DatosOperacion::MULTIPLICACION,6),
+            '-3 * 2 = -6' => array(-3,2,DatosOperacion::MULTIPLICACION,-6),
+            '-3 * -2 = 6' => array(-3,-2,DatosOperacion::MULTIPLICACION,6) ,
+            '6 / 3 = 2' => array(6,3,DatosOperacion::DIVISION,2),
+            '10 / 2 = 5' => array(10,2,DatosOperacion::DIVISION,5),
+            '10 / (-2) = -5' => array(10,-2,DatosOperacion::DIVISION,-5)            
         );
     }
 }
