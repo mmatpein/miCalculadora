@@ -1,0 +1,8 @@
+{
+    "require-dev": {
+        "phpunit/phpunit": ">=5.1.4-stable"
+    },
+    "autoload": {
+      "psr-4": {"miCalc\\modelo\\":"modelo/"}  
+    }
+}
