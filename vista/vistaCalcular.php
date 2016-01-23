@@ -15,19 +15,20 @@ and open the template in the editor.
         <div class="operacion">
             <?php
                 $simboloOperacion = "";
-                if ($operacion == 'suma'){
+                /* @var $datosOperacion miCalc\modelo\DatosOperacion */
+                if ($datosOperacion->operacion == \miCalc\modelo\DatosOperacion::SUMA){
                     $simboloOperacion = " + ";
-                } elseif ($operacion == 'resta'){
+                } elseif ($datosOperacion->operacion == \miCalc\modelo\DatosOperacion::RESTA){
                     $simboloOperacion = " - ";
-                } elseif ($operacion == 'multiplicacion'){
+                } elseif ($datosOperacion->operacion == \miCalc\modelo\DatosOperacion::MULTIPLICACION){
                     $simboloOperacion = " * ";
-                } elseif ($operacion == 'division'){
+                } elseif ($datosOperacion->operacion == \miCalc\modelo\DatosOperacion::DIVISION){
                     $simboloOperacion = " / ";
                 }
-                echo $operando1.$simboloOperacion.$operando2;
+                echo $datosOperacion->operando1.$simboloOperacion.$datosOperacion->operando2;
             ?>
         </div>
-        <p class="resultado">Resultado: <?php echo $resultado; ?></p>
+        <p class="resultado">Resultado: <?php echo $resultadoOperacion; ?></p>
         <?php
         // put your code here
         ?>
