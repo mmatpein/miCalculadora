@@ -27,7 +27,6 @@ and open the template in the editor.
                     <li><button type="submit" value="enviar">Enviar</button></li>
             </ul>
         </form>
-        <img src="a.jpg" alt="alterativo"/>
 
     </body>
 </html>
