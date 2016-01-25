@@ -24,5 +24,6 @@
             ?>
         </div>
         <p class="resultado">Resultado: <?php echo $resultadoOperacion; ?></p>
+        
     </body>
 </html>
